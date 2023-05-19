@@ -49,9 +49,42 @@
 .label-ram {
   font-size: large;
 }
-.workspaces {
-  margin-left: 7px;
+
+.works {
+  font-family:VictorMono Nerd Font;
+  font-weight:bold;
 }
-.workspaces button:hover {
-  color: #D35D6E;
+
+
+.r , .r1, .r2, .r3, .r4, .r5, .r6,
+.r11, .r22, .r33, .r44, .r55, .r66 {
+  margin: 0px 0px 0px 0px;
+  transition-duration: 1s;
+}
+
+/* Unoccupied */
+.r {
+  color: #606060;
+}
+
+/* Occupied */
+.r1, .r2, .r3, .r4, .r5, .r6, .r7, .r8, .r9 {
+  color:#fff;
+}
+
+
+/* Focused */
+.r11, .r22, .r33, .r44, .r55, .r66, .r77, .r88, .r99{
+  color: #0085af;
+  font-weight:bold;
+}
+
+
+.works button:hover {
+  color: #000000;
+  background-color: #bcbcbc;
+}
+
+.works button {
+  transition-duration: 2s;
 }
