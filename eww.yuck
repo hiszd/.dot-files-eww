@@ -1,6 +1,11 @@
-(defwidget bar []
+(defwidget bar0 []
   (centerbox :orientation "h"
-    (workspaces)
+    (workspaces0)
+    (music)
+    (sidestuff)))
+(defwidget bar1 []
+  (centerbox :orientation "h"
+    (workspaces1)
     (music)
     (sidestuff)))
 
@@ -8,19 +13,25 @@
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
     (metric :label "🔊"
             :value volume
-            :onchange "amixer -D pulse sset Master {}%")
+            :onchange "pamixer --set-volume {}"
+            :onclick "pamixer --toggle-mute")
     (metric :label "󰘚"
             :value {EWW_RAM.used_mem_perc}
-            :onchange "")
-    (metric :label "󰉉"
-            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
-            :onchange "")
+            :onchange ""
+            :onclick "")
+    (metric :label "󰃠"
+            :value brightness
+            :onchange "brightnessctl s {}%"
+            :onclick "")
     time))
 
-(defpoll workspace :interval "100ms" "scripts/workspace")
-(deflisten workspace2 "scripts/workspace")
-(defwidget workspaces []
-(literal :content workspace))
+(deflisten workspace0 "/home/zion/programming/rust/hyprws/target/release/hyprws --monitor 0")
+(deflisten workspace1 "/home/zion/programming/rust/hyprws/target/release/hyprws --monitor 1")
+(defwidget workspaces0 []
+(literal :content workspace0))
+(defwidget workspaces1 []
+(literal :content workspace1))
+
 
 (defwidget music []
   (box :class "music"
@@ -30,11 +41,12 @@
     {music != "" ? "🎵${music}" : ""}))
 
 
-(defwidget metric [label value onchange]
+(defwidget metric [label value onchange onclick]
   (box :orientation "h"
        :class "metric"
        :space-evenly false
-    (box :class "label" label)
+    (eventbox :onclick onclick
+    (box :class "label" label))
     (scale :min 0
            :max 101
            :active {onchange != ""}
@@ -47,18 +59,32 @@
   "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 
 (defpoll volume :interval "1s"
-  "scripts/getvol")
+  "pamixer --get-volume")
+
+(defpoll brightness :interval "1s"
+  "scripts/bright")
 
 (defpoll time :interval "10s"
   "date '+%H:%M %b %d, %Y'")
 
-(defwindow bar
+(defwindow bar0
   :monitor 0
   :stacking "fg"
   :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
                       :width "100%"
-                      :height "10px"
+                      :height "20px"
                       :anchor "top center")
-  (bar))
+  (bar0))
+(defwindow bar1
+  :monitor 1
+  :stacking "fg"
+  :exclusive true
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "20px"
+                      :anchor "top center")
+  (bar1))

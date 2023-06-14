@@ -1,0 +1,8 @@
+#! /bin/bash
+
+calculate() { printf "%i" "$((10**2 * $1/$2))"; }
+# calculate() { printf "%s\n" "$@" | bc -l; }
+
+cur=$(brightnessctl g)
+max=$(brightnessctl m)
+calculate $cur $max

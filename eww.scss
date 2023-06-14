@@ -3,8 +3,13 @@
 }
 
 //Global Styles
-.bar {
+.bar0 {
   background-color: #3a3a3a;
+  color: #b0b4bc;
+  padding: 10px;
+}
+.bar1 {
+  background-color: rgba(10,10,10,0.25);
   color: #b0b4bc;
   padding: 10px;
 }
@@ -13,6 +18,7 @@
 
 .sidestuff * {
   font-family:FiraMono Nerd Font;
+  font-weight:bold;
 }
 
 .sidestuff slider {
@@ -59,36 +65,23 @@
   font-weight:bold;
 }
 
-
-.r , .r1, .r2, .r3, .r4, .r5, .r6,
-.r11, .r22, .r33, .r44, .r55, .r66 {
+@mixin ws {
+  min-width: 4rem;
   margin: 0px 0px 0px 0px;
-  transition-duration: 1s;
+  transition-duration: 500ms;
 }
 
-/* Unoccupied */
-.r {
-  color: #606060;
+.wsnorm {
+  @include ws;
 }
-
-/* Occupied */
-.r1, .r2, .r3, .r4, .r5, .r6, .r7, .r8, .r9 {
-  color:#fff;
-}
-
 
 /* Focused */
-.r11, .r22, .r33, .r44, .r55, .r66, .r77, .r88, .r99{
+.wsfocused {
+  @include ws;
   color: #0085af;
-  font-weight:bold;
 }
-
 
 .works button:hover {
   color: #000000;
   background-color: #bcbcbc;
-}
-
-.works button {
-  transition-duration: 2s;
 }
