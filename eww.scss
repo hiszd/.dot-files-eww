@@ -4,21 +4,23 @@
 
 //Global Styles
 .bar0 {
-  background-color: #3a3a3a;
+  background-color: rgba(40, 40, 40, 1);
   color: #b0b4bc;
-  padding: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 .bar1 {
-  background-color: rgba(10,10,10,0.25);
+  background-color: rgba(40, 40, 40, 1);
   color: #b0b4bc;
-  padding: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 // Styles on classes (see eww.yuck for more information)
 
 .sidestuff * {
-  font-family:FiraMono Nerd Font;
-  font-weight:bold;
+  font-family: FiraMono Nerd Font;
+  font-weight: bold;
 }
 
 .sidestuff slider {
@@ -28,7 +30,7 @@
 
 .metric scale trough highlight {
   all: unset;
-  background-color: #D35D6E;
+  background-color: #d35d6e;
   color: #000000;
   border-radius: 10px;
 }
@@ -43,7 +45,7 @@
 }
 .metric scale trough highlight {
   all: unset;
-  background-color: #D35D6E;
+  background-color: #d35d6e;
   color: #000000;
   border-radius: 10px;
 }
@@ -61,14 +63,15 @@
 }
 
 .works {
-  font-family:VictorMono Nerd Font;
-  font-weight:bold;
+  font-family: VictorMono Nerd Font;
+  font-weight: bold;
 }
 
 @mixin ws {
   min-width: 4rem;
+  padding: 2px 0px 2px 0px;
   margin: 0px 0px 0px 0px;
-  transition-duration: 500ms;
+  transition-duration: 300ms;
 }
 
 .wsnorm {
